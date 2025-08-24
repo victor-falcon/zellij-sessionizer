@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+SEARCH_PATHS=("$HOME/Projects" "$HOME/code")
+SPECIFIC_PATHS=("$HOME/.dotfiles")
+
+# Collect all directories
+all_dirs=()
+
+# Add first-level directories from SEARCH_PATHS
+for search_path in "${SEARCH_PATHS[@]}"; do
+  if [[ -d "$search_path" ]]; then
+    for dir in "$search_path"/*; do
+      if [[ -d "$dir" ]]; then
+        all_dirs+=("$dir")
+      fi
+    done
+  fi
+done
+
+# Add SPECIFIC_PATHS
+for specific_path in "${SPECIFIC_PATHS[@]}"; do
+  if [[ -d "$specific_path" ]]; then
+    all_dirs+=("$specific_path")
+  fi
+done
+
+# Use fzf to select a directory
+selected_dir=$(printf '%s\n' "${all_dirs[@]}" | fzf --prompt="Select project: ")
+
+# Exit if nothing was selected
+if [[ -z "$selected_dir" ]]; then
+  exit 0
+fi
+
+# Create session name from directory basename
+session_name=$(basename "$selected_dir")
+
+# Change to session
+zellij pipe --plugin https://github.com/mostafaqanbaryan/zellij-switch/releases/download/0.2.1/zellij-switch.wasm -- "--session $session_name --cwd $selected_dir"
