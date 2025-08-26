@@ -36,4 +36,10 @@ fi
 session_name=$(basename "$selected_dir")
 
 # Change to session
-zellij pipe --plugin https://github.com/mostafaqanbaryan/zellij-switch/releases/download/0.2.1/zellij-switch.wasm -- "--session $session_name --cwd $selected_dir"
+if [[ -v "$ZELLIJ" ]]; then
+  # if we are in a zellij sesssion
+  zellij pipe --plugin https://github.com/mostafaqanbaryan/zellij-switch/releases/download/0.2.1/zellij-switch.wasm -- "--session $session_name --cwd $selected_dir"
+else
+  # if we are not in a zellij session
+  zellij attach "$session_name" --create
+fi
