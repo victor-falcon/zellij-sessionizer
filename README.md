@@ -22,7 +22,7 @@ Inspired by ThePrimeagen's [tmux-sessionizer](https://github.com/ThePrimeagen/.d
 
 1. Clone this repository or download the script:
 ```bash
-curl -o zellij-sessionizer https://raw.githubusercontent.com/yourusername/zellij-sessionizer/main/bin/zellij-sessionizer
+curl -o zellij-sessionizer https://raw.githubusercontent.com/victor-falcon/zellij-sessionizer/refs/heads/main/zellij-sessionizer
 chmod +x zellij-sessionizer
 ```
 
