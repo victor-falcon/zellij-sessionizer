@@ -260,5 +260,6 @@ if [[ -v "$ZELLIJ" ]]; then
   zellij action switch-session --cwd "$selected_dir" "$session_name"
 else
   # if we are not in a zellij session
+  cd "$selected_dir"
   zellij attach "$session_name" --create
 fi
