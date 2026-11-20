@@ -11,14 +11,12 @@ Inspired by ThePrimeagen's [tmux-sessionizer](https://github.com/ThePrimeagen/.d
 - 🔍 **Fuzzy Finding**: Use fzf to quickly search and select from your projects
 - 🚀 **Smart Session Management**: Automatically creates new sessions or switches to existing ones
 - 📁 **Configurable Paths**: Define your own project directories to search
-- 🔄 **Seamless Switching**: Uses the zellij-switch plugin for smooth session transitions
 - ⚡ **Fast**: Instant project switching without manual navigation
 
 ## Prerequisites
 
 - [Zellij](https://zellij.dev/) terminal multiplexer
 - [fzf](https://github.com/junegunn/fzf) fuzzy finder
-- [zellij-switch plugin](https://github.com/mostafaqanbaryan/zellij-switch) for session switching
 
 ## Installation
 
@@ -34,8 +32,6 @@ mv zellij-sessionizer ~/.local/bin/ && chmod +x ~/.local/bin/zellij-sessionizer
 # or
 mv zellij-sessionizer /usr/local/bin/ && chmod +x /usr/local/bin/zellij-sessionizer
 ```
-
-3. Install the [mostafaqanbaryan/zellij-switch](https://github.com/mostafaqanbaryan/zellij-switch) plugin by adding it to your Zellij config or let it auto-download on first use.
 
 ## Configuration
 
@@ -66,10 +62,6 @@ ZELLIJ_SESSIONIZER_SPECIFIC_PATHS="/etc/somedir /etc/otherdir" \
 # Operating system type (used for OS-specific behavior)
 # Default: $(uname), usually no need to specify this.
 ZELLIJ_SESSIONIZER_OS_TYPE_OS_TYPE="Linux" \
-
-# Path or URL to load zellij-switch plugin
-# Default: https://github.com/mostafaqanbaryan/zellij-switch/releases/download/0.2.1/zellij-switch.wasm
-ZELLIJ_SESSIONIZER_SWITCH_PLUGIN="file:/path/to/plugin" \
 
 zellij-sessionizer
 ```
@@ -121,14 +113,13 @@ bindkey -s '^f' 'zellij-sessionizer\n'  # Zsh
 
 1. **Directory Collection**: The script scans your configured paths and collects all valid directories
 2. **Fuzzy Selection**: Uses fzf to present an interactive list of projects
-3. **Session Management**: Leverages the zellij-switch plugin to handle session creation and switching
+3. **Session Management**: Creates or switches to the selected project using Zellij
 4. **Working Directory**: Automatically sets the correct working directory for your project
 
 ## Dependencies
 
 - **Zellij**: Terminal multiplexer for session management
 - **fzf**: Fuzzy finder for project selection
-- **zellij-switch**: Plugin for seamless session switching
 
 Install dependencies:
 
